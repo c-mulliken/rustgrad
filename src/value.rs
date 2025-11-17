@@ -7,6 +7,7 @@ pub struct Value {
     pub grad: f64,
     pub op: Option<Op>,
     pub parents: Vec<ValueRef>,
+    pub requires_grad: bool,
 }
 
 pub type ValueRef = Rc<RefCell<Value>>;
@@ -17,6 +18,7 @@ pub fn val(x: f64) -> ValueRef {
         grad: 0.0,
         op: None,
         parents: Vec::new(),
+        requires_grad: true,
     }))
 }
 
